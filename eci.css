@@ -3,19 +3,36 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f8f9fa;
   font-family: Arial, sans-serif;
   margin: 0;
-  position: relative; /* Untuk penempatan credit */
+  position: relative;
+
+  background-image: url("ecian.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Gelapkan dengan warna hitam transparan */
+  z-index: 1; /* Pastikan di bawah konten */
 }
 
 .container {
   text-align: center;
+  position: relative; /* Agar konten tetap di atas lapisan gelap */
+  z-index: 2; /* Pastikan konten di atas lapisan gelap */
 }
 
 h1 {
   font-size: 3rem;
-  color: #e63946;
+  color: #ffffff;
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -26,6 +43,14 @@ h1 {
   animation: heartbeat 1s infinite;
 }
 
+.credit {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
 @keyframes heartbeat {
   0%,
   100% {
@@ -34,12 +59,4 @@ h1 {
   50% {
     transform: scale(1.2);
   }
-}
-
-.credit {
-  position: absolute; /* Membuat teks berada di sudut */
-  bottom: 20px; /* Jarak dari bawah */
-  right: 20px; /* Jarak dari kanan */
-  font-size: 1rem;
-  color: #333;
 }
